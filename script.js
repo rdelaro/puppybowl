@@ -85,9 +85,11 @@ const renderAllPlayers = async (playerList) => {
             playerElement.innerHTML = `
                     <h2>${players.name}</h2>
                     <p>${players.breed}</p>
-                    <img src="${players.imageUrl}">
+                    <a href="${players.imageUrl}"><img src="${players.imageUrl}"></a>
+                    <br><br>
                     <button class="details-button" data-id"${players.id}">See Player Details</button>
                     <button class="remove-button" data-id"${players.id}">Remove Player</button>
+                    
             `;
         playerContainer.appendChild(playerElement);
 
