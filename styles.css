@@ -1,0 +1,9 @@
+body {
+  background-image: url("seamlesspuppy.avif") ;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
