@@ -1,6 +1,7 @@
 body {
   background-image: url("https://img.freepik.com/premium-vector/seamless-pattern-cute-dog-puppy-symbol-toy-paw-footstep-cartoon-funny-happy-dog-concept-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-200.jpg");
   margin: 0px;
+  margin-bottom: 25px;
 }
 
 img {
@@ -13,6 +14,11 @@ img:hover {
   transform: scale(1.1);
 }
 
+#detail-image:hover {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1)
+}
+
 h1 {
   color: #ECAF5C;
   padding-left: 6vw;
@@ -20,7 +26,6 @@ h1 {
   margin-right: 0px;
   text-align: left;
   background-color: #222222;
-  /* border-radius: 25px; */
   font-size: 5rem;
   font-family: arial;
   letter-spacing: 2px;
@@ -49,6 +54,23 @@ h2, p {
   row-gap: 50px;
   
 }
+
+#single {
+  text-align: right;
+  background-color: #222222;
+  border-radius: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 15px;
+  width: 75vw;
+  height: 80vh;
+}
+
+#detail-image {
+ height: 80vh;
+ float: left;
+}
+
 
 .players {
   text-align: center;
