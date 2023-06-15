@@ -62,12 +62,12 @@ h2, p {
   margin-left:auto;
   margin-right:auto;
   padding: 15px;
-  width: 75vw;
-  height: 80vh;
+  width: 600px;
+  height: 70vh;
 }
 
 #detail-image {
- height: 80vh;
+ height: 70vh;
  float: left;
 }
 
@@ -85,9 +85,40 @@ h2, p {
 
 
 
-/* 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-} */
+/* media switch */
+@media (max-width: 550px) {
+  /* .content {
+    width: 100vw;
+  } */
+
+  #detail-image {
+    text-align: center;
+    
+
+      /* height: 100%; */
+   }
+
+   /* .players {
+    text-align: center;
+    background-color: #222222;
+    border-radius: 20px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 15px;
+    width: 100vh;
+    height: 100vh;
+    overflow:scroll; */
+  
+
+  #single {
+    /* float: center; */
+    text-align: center;
+    background-color: #222222;
+    border-radius: 20px;
+    object-fit: contain;
+    padding: 15px;
+    /* width: 50vw; */
+    height: 100%;
+    /* overflow:scroll;  */
+  }
+}
