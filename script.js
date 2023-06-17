@@ -31,22 +31,25 @@ const fetchSinglePlayer = async (id) => {
     }
 };
 
-// const addNewPlayer = async (name, breed, imageUrl) => {
-//     try {
-//         const response = await fetch(APIURL, {
-//             method: 'POST',
-//             body: JSON.stringify({ name, breed, imageUrl }),
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-//         const player = await response.json();
-//         fetchAllPlayers();
+const addNewPlayer = async (name, breed, imageUrl) => {
+    try {
+        const response = await fetch(APIURL, {
+            method: 'POST',
+            body: JSON.stringify({ name, breed, imageUrl }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const player = await response.json();
+        fetchAllPlayers();
 
-//     } catch (err) {
-//         console.error('Oops, something went wrong with adding that player!', err);
-//     }
-// };
+                // reload the window
+                window.location.reload();
+
+    } catch (err) {
+        console.error('Oops, something went wrong with adding that player!', err);
+    }
+};
 
 const removePlayer = async (id) => {
     try {
@@ -149,7 +152,6 @@ const renderSinglePlayer = (players) => {
 
 
 const renderAllPlayers = (playerList) => {
-    
         playerContainer.innerHTML = '';
         playerList.forEach((players) => {
             const playerElement = document.createElement('div');
@@ -210,19 +212,52 @@ const renderAllPlayers = (playerList) => {
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
  * fetches all players from the database, and renders them to the DOM.
  */
-// const renderNewPlayerForm = () => {
-//     try {
+const renderNewPlayerForm = () => {
+    try {
+        let formHtml = `
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Name">
+            <label for="breed">Breed</label>
+            <input type="text" id="breed" name="breed" placeholder="breed">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" id="imageUrl" name="imageUrl" placeholder="Image URL">
+            <button type="submit">Create</button>
+        </form>
+        `;
+newPlayerFormContainer.innerHTML = formHtml;
         
-//     } catch (err) {
-//         console.error('Uh oh, trouble rendering the new player form!', err);
-//     }
-// }
+        let form = newPlayerFormContainer.querySelector('form');
+        form.addEventListener('submit', async (event) => {
+           event.preventDefault() ;
+
+            let playerData = {
+                name: form.name.value,
+                breed: form.breed.value,
+                imageUrl: form.imageUrl.value
+            };
+await addNewPlayer(playerData.name, playerData.breed, playerData.imageUrl);
+
+            const players = await fetchAllPlayers();
+            renderAllPlayers(players.data.players);
+
+            form.name.value = '';
+            form.breed.value = '';
+            form.imageUrl = '';
+        });
+        
+        
+    } catch (err) {
+        console.error('Uh oh, trouble rendering the new player form!', err);
+    }
+}
+
 
 const init = async () => {
     const players = await fetchAllPlayers();
     renderAllPlayers(players.data.players);
 
-    // renderNewPlayerForm();
+    renderNewPlayerForm();
 }
 
 init();
