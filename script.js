@@ -89,29 +89,6 @@ const removePlayer = async (id) => {
  * @returns the playerContainerHTML variable.
  */
 
-// render single player
-// const renderSinglePlayer = async (id) => {
-//     try {
-//         const playerResponse = await fetch(`${APIURL}/${id}`);
-//         const players = await playerResponse.json();
-//         console.log('Player', players);
-
-// // Create new HTML element to display party details
-//         const playerDetailsElement = document.createElement('div');
-//             playerDetailsElement.classList.add('player-details');
-//             playerDetailsElement.innerHTML =  `
-//             <h2>${players.name}</h2>
-//             <p>${players.id}</p>
-//             <p>${players.breed}</p>
-//             <p>${players.status}</p>
-//             <p>${players.createdAt}</p>
-//             <p>${players.updatedAt}</p>
-//             <p>${players.imageUrl}</p>
-//             <p>${players.teamId}</p>
-//             <p>${players.cohortId}</p>
-//             <br>
-//             <button class="close-button">Close</button>
-//             `;
 
 const renderSinglePlayer = (players) => {
     let playerHTML = `
