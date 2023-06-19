@@ -4,6 +4,22 @@ body {
   margin-bottom: 25px;
 }
 
+#new-player-form{
+  color: #ECAF5C;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #222222;
+  font-size: 2rem;
+  font-family: arial;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+  text-shadow: 0 0 5px #000;
+}
+
+form {
+  padding: 5px;
+}
+
 img {
   border-radius: 20px;
   height: 300px;
@@ -26,11 +42,15 @@ h1 {
   margin-right: 0px;
   text-align: left;
   background-color: #222222;
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: arial;
   letter-spacing: 2px;
   font-variant: small-caps;
   text-shadow: 0 0 5px #000;
+}
+
+#addPlayer {
+  margin: 0px;
 }
 
 h2, p {
@@ -43,7 +63,11 @@ h2, p {
   margin-left: auto;
   margin-right: auto;
   width: 90vw;
-    
+  height: inherit;  
+}
+
+#new-player-form {
+  margin: 30px;
 }
 
 #new-player-form {
@@ -66,12 +90,12 @@ h2, p {
   margin-left:auto;
   margin-right:auto;
   padding: 15px;
-  width: 600px;
-  height: 70vh;
+  width: 100%;
+  height: 100%;
 }
 
 #detail-image {
- height: 70vh;
+ height: 100vh;
  float: left;
 }
 
@@ -99,6 +123,8 @@ h2, p {
     border-radius: 20px;
     object-fit: contain;
     padding: 15px;
+    width: 100%;
+    main
     height: 100%;
   }
 }

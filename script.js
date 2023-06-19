@@ -130,26 +130,13 @@ const renderSinglePlayer = (players) => {
     playerContainer.innerHTML = playerHTML;
 
     let closeButton = playerContainer.querySelector('.close-button');
+    // Add event listener to close button
     closeButton.addEventListener('click', async () => {
         const playerS = await fetchAllPlayers();
         renderAllPlayers(playerS.data.players);
     })
 
 }
-// playerContainer.innerHTML = playerHTML;
-//     // playerContainer.appendChild(playerDetailsElement);
-
-//     // Add event listener to close button
-//     let closeButton = playerContainer.querySelector('.close-button');
-//     closeButton.addEventListener = ('click', async () => {
-//         const players = await fetchAllPlayers();
-//         renderAllPlayers(players);
-//     });
-//     } catch (err) {
-//         console.error(`Whoops, trouble!`, err);
-// }
-// }
-
 
 const renderAllPlayers = (playerList) => {
         playerContainer.innerHTML = '';
@@ -167,46 +154,21 @@ const renderAllPlayers = (playerList) => {
         playerContainer.appendChild(playerElement);
 
         let removeButton = playerElement.querySelector('.remove-button');
+        // Attach event listener to delete button
         removeButton.addEventListener('click', (event) => {
             event.preventDefault();
             removePlayer(players.id);
         });
 
         let detailButton = playerElement.querySelector('.details-button');
+        // Attach event listener to details button
         detailButton.addEventListener('click', (event) => {
             event.preventDefault();
             renderSinglePlayer(players);
         });
     })
 }
-// Add event listener after appending the party element
-// attachDetailsButtonListener(playerElement);
-// attachDeleteButtonListener(playerElement);
-            
-        
-    // catch (err) {
-    //     console.error('Uh oh, trouble rendering players!', err);
-    // }
-// };
 
-// // Attach event listener to details button
-// const attachDetailsButtonListener = (playerElement) => {
-//     const detailsButton = playerElement.querySelector('.details-button');
-//     detailsButton.addEventListener('click', async (event) => {
-//         const playersId = event.target.dataset.id;
-//         await renderSinglePlayer(playersId)
-//     });
-// };
-
-// // Attach event listener to delete button
-// const attachDeleteButtonListener = (playerElement) => {
-//     const deleteButton = playerElement.querySelector('.remove-button');
-//     deleteButton.addEventListener('click', async (event) => {
-//         const playersId = event.target.dataset.id;
-//         await removePlayer(playersId);
-//         playerElement.remove();
-//     })
-// }
 
 /**
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
@@ -216,6 +178,7 @@ const renderNewPlayerForm = () => {
     try {
         let formHtml = `
         <form>
+            <h2 id="addPlayer">Add New Player</h2>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Name">
             <label for="breed">Breed</label>
@@ -226,6 +189,28 @@ const renderNewPlayerForm = () => {
         </form>
         `;
 newPlayerFormContainer.innerHTML = formHtml;
+
+        
+        let form = newPlayerFormContainer.querySelector('form');
+        form.addEventListener('submit', async (event) => {
+           event.preventDefault() ;
+
+            let playerData = {
+                name: form.name.value,
+                breed: form.breed.value,
+                imageUrl: form.imageUrl.value
+            };
+await addNewPlayer(playerData.name, playerData.breed, playerData.imageUrl);
+
+            const players = await fetchAllPlayers();
+            renderAllPlayers(players.data.players);
+
+            form.name.value = '';
+            form.breed.value = '';
+            form.imageUrl = '';
+        });
+        
+=======
         
         let form = newPlayerFormContainer.querySelector('form');
         form.addEventListener('submit', async (event) => {
