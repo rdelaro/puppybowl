@@ -189,6 +189,28 @@ const renderNewPlayerForm = () => {
         </form>
         `;
 newPlayerFormContainer.innerHTML = formHtml;
+
+        
+        let form = newPlayerFormContainer.querySelector('form');
+        form.addEventListener('submit', async (event) => {
+           event.preventDefault() ;
+
+            let playerData = {
+                name: form.name.value,
+                breed: form.breed.value,
+                imageUrl: form.imageUrl.value
+            };
+await addNewPlayer(playerData.name, playerData.breed, playerData.imageUrl);
+
+            const players = await fetchAllPlayers();
+            renderAllPlayers(players.data.players);
+
+            form.name.value = '';
+            form.breed.value = '';
+            form.imageUrl = '';
+        });
+        
+=======
         
         let form = newPlayerFormContainer.querySelector('form');
         form.addEventListener('submit', async (event) => {

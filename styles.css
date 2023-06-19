@@ -70,6 +70,10 @@ h2, p {
   margin: 30px;
 }
 
+#new-player-form {
+  margin: 30px;
+}
+
 #all-players-container {
   display: flex;
   flex-wrap: wrap;
@@ -120,6 +124,7 @@ h2, p {
     object-fit: contain;
     padding: 15px;
     width: 100%;
+    main
     height: 100%;
   }
 }
